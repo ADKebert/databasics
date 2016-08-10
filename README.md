@@ -90,5 +90,20 @@ VALUES(NULL,
 ## Adventure Mode
 
 - [ ] What item was ordered most often? Grossed the most money?
+SELECT items.title, count(orders.item_id) AS "Times Ordered"
+FROM items, orders
+WHERE items.id = orders.item_id
+GROUP BY orders.item_id
+ORDER BY count(orders.item_id) DESC LIMIT 1;
+Ergonomic Concrete Gloves
+
+SELECT items.title, sum(items.price * orders.quantity) AS "Grossed"
+FROM items, orders
+WHERE items.id = orders.item_id
+GROUP BY orders.item_id
+ORDER BY sum(items.price * orders.quantity) DESC LIMIT 1;
+Incredible Granite Car
+
 - [ ] What user spent the most?
+
 - [ ] What were the top 3 highest grossing categories?
