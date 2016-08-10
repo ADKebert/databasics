@@ -105,5 +105,17 @@ ORDER BY sum(items.price * orders.quantity) DESC LIMIT 1;
 Incredible Granite Car
 
 - [ ] What user spent the most?
+SELECT users.first_name, users.last_name, sum(items.price * orders.quantity)
+FROM users, items, orders
+WHERE users.id = orders.user_id AND orders.item_id = items.id
+GROUP BY orders.user_id
+ORDER BY sum(items.price * orders.quantity) DESC LIMIT 1;
+Hassan Runte
 
 - [ ] What were the top 3 highest grossing categories?
+SELECT items.category, su(items.price * orders.quantity) AS "Grossed"
+FROM items, orders
+WHERE items.id = orders.item_id
+GROUP BY items.category
+ORDER BY sum(items.price * orders.quantity) DESC LIMIT 1;
+Music, Sports & Clothing
